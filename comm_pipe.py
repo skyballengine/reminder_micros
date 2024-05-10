@@ -8,10 +8,17 @@ PORT=5555
 import time
 import zmq
 from reminder import Reminder
+import socket
+hostname = socket.gethostname()
+IPAddr = socket.gethostbyname(hostname)
+
+print("Your Computer Name is:" + hostname)
+print("Your Computer IP Address is:" + IPAddr)
 
 context = zmq.Context()
 socket = context.socket(zmq.REP)
-socket.bind(f"tcp://localhost/{PORT}")
+socket.bind(f"tcp://{IPAddr}:{PORT}")
+# print(context.get(zmq.IDENTITY))
 
 while True:
     # wait for requests from clients
