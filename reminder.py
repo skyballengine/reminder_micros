@@ -1,16 +1,16 @@
-from datetime import datetime
+from datetime import datetime, date
 
 class Reminder:
-    def __init__(self, name=None, dtime=None, amount=None) -> None:
+    def __init__(self, name=None, date=None, amount=None) -> None:
         self.name = name
-        self.dtime = dtime
+        self.date = date
         self.amount = amount
         
     def get_name(self) -> str:
         return self.name
     
-    def get_datetime(self) -> datetime:
-        return self.dtime
+    def get_date(self) -> date:
+        return self.date
     
     def get_amount(self) -> int:
         return self.amount
@@ -18,8 +18,8 @@ class Reminder:
     def set_name(self, name):
         self.name = name
 
-    def set_datetime(self, dtime):
-        self.dtime = dtime
+    def set_date(self, date):
+        self.date = date
 
     def set_amount(self, amount):
         self.amount = amount

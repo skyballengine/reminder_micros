@@ -13,14 +13,13 @@ from datetime import datetime
 # take in data dict already been json loaded back to python
 def create_reminder(data):
     print(data, end="\n")
-    new_reminder = Reminder(data["name"], data["dtime"], data["amount"])
+    new_reminder = Reminder(data["name"], data["date"], data["amount"])
     return new_reminder
 
 def convert_from_json(comm_in):
     message_to_dict = json.loads(str(message))
     print(message_to_dict)
     print(type(message_to_dict))
-
     pass
 
 def convert_to_json():
