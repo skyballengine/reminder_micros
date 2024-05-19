@@ -13,7 +13,7 @@ from datetime import datetime
 # take in data dict already been json loaded back to python
 def create_reminder(data):
     print(data, end="\n")
-    new_reminder = Reminder(data["name"], data["date"], data["amount"])
+    new_reminder = Reminder(data[0], data[1], data[2])
     return new_reminder
 
 def convert_from_json(comm_in):
@@ -38,17 +38,21 @@ while True:
     print(f"Received request: {message}")
     print(type(message), end="\n")
     print()
-    # print(converted_message)
+    message = message.decode()
+
+    # convert from json to python dict
+
     message_to_dict = json.loads(message)
 
     # message_to_dict = dict(message_to_string)
     print(message_to_dict)
     print(type(message_to_dict))
+    print(len(message_to_dict))
     print()
     reminder = create_reminder(message_to_dict)
     print(reminder)
 
-    date_string = reminder.get_datetime()
+    date_string = reminder.get_date()
     reminder_name = reminder.get_name()
     print(reminder_name)
     print(date_string, end="\n")
