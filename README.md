@@ -33,7 +33,7 @@ d. The microservice will be available upon request, at which point it will be ru
 
 e. I will be available at our agreed upon time to ensure that the microservice is functioning at the specified ip address and port, should any issues arise, we can work through it.
 
-![Model] (Reminder Microservice.png?raw=true)
+![Model] (https://github.com/skyballengine/reminder_micros/blob/cd8354360d55ad3598d3ebc51bb7386183d67236/Reminder%20Microservice.png)
 
 
 
