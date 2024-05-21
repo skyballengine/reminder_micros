@@ -1,5 +1,5 @@
 #
-#   Hello World server in Python
+#   ZeroMQ Server in Python
 #   Binds REP socket to tcp://*:5555
 #   Expects json from client, needs to json.dump() to deserialize 
 #
@@ -9,21 +9,14 @@ import zmq
 import json
 from reminder import Reminder
 from datetime import datetime
+from pprint import pprint
 
 # take in data dict already been json loaded back to python
 def create_reminder(data):
     print(data, end="\n")
-    new_reminder = Reminder(data[0], data[1], data[2])
+    new_reminder = Reminder(data["name"], data["date"], data["amount"])
     return new_reminder
 
-def convert_from_json(comm_in):
-    message_to_dict = json.loads(str(message))
-    print(message_to_dict)
-    print(type(message_to_dict))
-    pass
-
-def convert_to_json():
-    pass
 
 context = zmq.Context()
 socket = context.socket(zmq.REP)
@@ -33,35 +26,22 @@ while True:
     #  Wait for next request from client
     # message = json.loads(socket.recv())
     # converted_message = json.dump(message)
-    message = socket.recv()
-    print()
-    print(f"Received request: {message}")
-    print(type(message), end="\n")
-    print()
-    message = message.decode()
+    message = socket.recv_json()
+    pprint(f"Received request: {message}")
+    pprint(type(message))
 
-    # convert from json to python dict
+    # Create Reminder object using dict from client
+    reminder = create_reminder(message)
+    pprint(reminder)
+    pprint(type(reminder))
 
-    message_to_dict = json.loads(message)
-
-    # message_to_dict = dict(message_to_string)
-    print(message_to_dict)
-    print(type(message_to_dict))
-    print(len(message_to_dict))
-    print()
-    reminder = create_reminder(message_to_dict)
-    print(reminder)
-
-    date_string = reminder.get_date()
+    reminder_date = reminder.get_date()
     reminder_name = reminder.get_name()
-    print(reminder_name)
-    print(date_string, end="\n")
+    reminder_amount = reminder.get_amount()
 
-    response = "Your reminder: " + reminder_name + " for: " + date_string + " has been created and is viewable in your calendar!"
-    # print(type("Your reminder: " + reminder_name + " for: " + date_string + " has been created and is viewable in your calendar!"))
+    response = f"Your reminder: {reminder_name} for {reminder_amount} on {reminder_date} has been created and is viewable in your calendar!"
+    # print(type("Your reminder: " + reminder_name + " for: " + reminder_date + " has been created and is viewable in your calendar!"))
     encoded_response = response.encode("UTF-8")
-    print(type(response))
-    print(type(encoded_response))
     
     #  Do some 'work'
     time.sleep(1)

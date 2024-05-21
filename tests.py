@@ -1,1 +1,0 @@
-test = "Your reminder: " + reminder_name + " for: " + date_string + " has been created and is viewable in your calendar!"
