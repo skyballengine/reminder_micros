@@ -29,6 +29,12 @@ a. The Reminder Microservice was created for Abdulellah's Bill Tracking App.
 
 b. The microservice is complete.
 
+c. There are no issues currently.
+
 d. The microservice will be available upon request, at which point it will be running on my local machine and we will coordinate so that at a specified time I will provide the ip address and port so the socket will be open and available to communicate.
 
 e. I will be available at our agreed upon time to ensure that the microservice is functioning at the specified ip address and port, should any issues arise, we can work through it.
+
+f. If problems arise, I will be available via our Slack channel to figure out a solution.
+
+g. Nothing additional at this time.
