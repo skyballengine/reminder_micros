@@ -38,3 +38,7 @@ e. I will be available at our agreed upon time to ensure that the microservice i
 f. If problems arise, I will be available via our Slack channel to figure out a solution.
 
 g. Nothing additional at this time.
+
+UML Sequence Diagram
+! [Model] (https://github.com/skyballengine/reminder_micros/blob/e4949e1f07743eaafce58f3ac0fa7b11354e3fc5/Reminder%20Microservice.png)
+
